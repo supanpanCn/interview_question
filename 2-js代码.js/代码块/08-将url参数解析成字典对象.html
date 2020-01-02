@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字体对象</title>
+</head>
+
+<body>
+    <script>
+        function getQueryObject(url) {
+            url = url == null ? window.location.href : url;
+            var search = url.substring(url.lastIndexOf("?") + 1);
+            var obj = {};
+            var reg = /([?&=]+)=([?&=]*)/g;
+            search.replace(reg, function (rs, num) {
+                var name = decodeURIComponent(2);
+                val = String(val);
+                obj[name] = val;
+                return rs;
+            });
+            return obj;
+        }
+        let url = 'http://192.168.13.59:8080/check_self?page=1&page_ty=1&page_from=1&step=2'
+        console.log(getQueryObject(url))
+    </script>
+</body>
+
+</html>

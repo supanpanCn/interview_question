@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一致的成员和索引</title>
+</head>
+
+<body>
+    <script>
+        // 实现1
+        let arr = new Array(100)
+        console.log(Array.from(arr.keys()))
+        // 实现2
+        var arr1 = new Array(101);
+        var str = arr1.join('1,');
+        str.replace(/(1\,)/g, function ($0, $1, index) {
+            /* 
+                参数说明
+                    匹配到的字符串
+                    子匹配，可能为多个
+                    匹配字符串的索引位置
+                    原始字符
+            */       
+            var start = '' + Math.ceil(index / 2); 
+            arr1.splice(start,1,start)
+        });
+        arr1.pop()
+        console.log(arr1)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深度克隆</title>
+</head>
+
+<body>
+    <script>
+        let obj = ['1',[2,3,[4]],true,function(){}]
+        function deepClone(obj) {
+            let newObj = Array.isArray(obj) ? [] : {}
+            if (obj && typeof obj === "object") {
+                for (let key in obj) {
+                    // hasOwnProperty用来判断某一个属性是否是通过继承得来
+                    if (obj.hasOwnProperty(key)) {
+                        if(typeof obj[key] === 'object'){
+                            newObj[key] = deepClone(obj[key])
+                        }else{
+                            newObj[key] = obj[key]
+                        }
+                    }
+                }
+            }else{
+                return '必须传递对象'
+            }
+            return newObj
+        }
+        console.log(deepClone(obj));
+        let obj_1 = ['1',[2,3,[4]],true,function(){}]
+        console.log(JSON.parse(JSON.stringify(obj_1)))
+    </script>
+</body>
+
+</html>

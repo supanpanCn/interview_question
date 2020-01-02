@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>checkbox获取</title>
+</head>
+<body>
+    <input type="checkbox" name="" id="">
+    <input type="checkbox" name="" id="">
+    <input type="number" name="" id="">
+    <script>
+        let inps = document.getElementsByTagName('input')
+        let len = inps.length
+        let arr = Array.prototype.slice.call(inps).filter(v=>{
+            return v.type=='checkbox'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>去首位空格</title>
+</head>
+
+<body>
+    <script>
+        var arr = [
+            [1, 2],
+            [3, 4]
+        ];
+        function Jw(obj) {
+            // apply接收一个数组，参数是数组的成员
+            // 当将arr传递给apply时，arr已经不再被认为是数组了
+            return Array.prototype.concat.apply([], obj);
+        }
+        console.log(Jw(arr));
+        console.log(arr.flat());
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+</head>
+<body>
+    <script>
+        let end_time = new Date('2019/12/31 00:00:00')
+        function countDown(){
+            let start_time = new Date()
+            let distance = (end_time - start_time)/1000
+            let day = parseInt(distance/(60*60*24)),
+                hours = parseInt(distance/(60*60)%24),
+                minutes = parseInt(distance/(60)%60),
+                seconds = parseInt(distance%60)
+            console.log(day,hours,minutes,seconds)
+        }
+        setInterval(()=>{
+            countDown()
+        },1000)
+    </script>
+</body>
+</html>

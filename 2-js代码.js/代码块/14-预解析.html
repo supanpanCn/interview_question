@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预解析</title>
+</head>
+
+<body>
+    <script>
+        function c() {
+            // 由于预解析的存在，fuanction a会被提升到函数的顶部
+            console.log(a);
+
+            function a() {};
+            var a = 10;
+            // 这里实际上还是改变的var a
+            a = 100;
+            console.log(a);
+        }
+        c();
+        console.log('----------------------------------1');
+
+        (function d(num) {
+            console.log(num);
+            var num = 10;
+        }(100))
+        console.log('----------------------------------2');;
+        (function e(num) { //预解析执行完毕后num为func，当执行时只为变量赋值
+            console.log(num);
+            var num = 10;
+
+            function num() {};
+        }(100))
+        console.log('----------------------------------3');
+
+        ;
+        (function f(num) {
+            function num() {}
+            console.log(num);
+            var num = 10
+            console.log(num);
+        }(100))
+
+        console.log('----------------------------------4');
+
+        function m() {
+            console.log(a1); // underfined
+            console.log(a2); // underfined
+            console.log(b1); // underfined
+            console.log(b2); // underfined
+            if (false) { //预解析会跳过if语句
+                function b1() {};
+                var a1 = 10;
+            }
+            if (true) {
+                function b2() {};
+                var a2 = 10;
+            }
+            console.log(a1); // underfined
+            console.log(a2); // 10
+            console.log(b1); // underfined
+            console.log(b2); // function
+        }
+        m();
+
+        console.log('----------------------------------5');
+        function n() {
+            kpl=10  //未使用var关键字的也不会进行预解析
+            let kpl //es6不会进行预解析
+            if (2 > 1) { //预解析不识别if
+                arr = 10; //arr是一个es6变量，这里输入未声明就赋值，会报错
+                brr = 10;
+                let arr;
+                var brr;
+                console.log(arr);
+                console.log(brr);
+            }
+        }
+        n(); // ReferenceError
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>去首位空格</title>
+</head>
+
+<body>
+    <script>
+        let str = ' abc '
+        String.prototype.myTrim = function(){
+            return this.replace(/^\s+/,'').replace(/\s+$/,'')
+        }
+        console.log(str.myTrim());
+    </script>
+</body>
+
+</html>
